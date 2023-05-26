@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chessboard</title>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+
+        .board {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+
+        .black {
+            background-color: #000;
+        }
+
+        .tile {
+            box-sizing: border-box;
+            border: 1px solid red;
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <input id="l" placeholder="no. of rows">
+    <input id="b" placeholder="no. of columns">
+    <button onClick="createBoard()">Submit</button>
+    <div id="container" class="board"></div>
+
+    <script>
+        function createBoard() {
+            var numOfRows = Number(document.getElementById("l").value);
+            var numOfColumns = Number(document.getElementById("b").value);
+
+            var board = document.getElementById("container")
+            board.innerHTML = "";
+            board.style.width = 50 * numOfColumns + 'px';
+            board.style.height = 50 * numOfRows + 'px';
+
+            for (var i = 0; i < numOfRows; i++) {
+                for (var j = 0; j < numOfColumns; j++) {
+                    var tile = document.createElement("div");
+                    // console.log(i)
+                    // console.log(j)
+                    var tileIndex = i + j;
+                    // console.log(tileIndex)
+                 
+
+                    if (tileIndex % 2 === 0) {
+                        tile.classList.add("black");
+                    }
+
+                    tile.classList.add("tile");
+                    board.appendChild(tile);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
